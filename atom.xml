@@ -4,12 +4,26 @@
   <title>LearnData 开源笔记</title>
   <subtitle>开源工具、效率方法、心理学探索的自我提升笔记，记录并输出一切能让自己提升的知识。</subtitle>
   <icon>https://newzone.top/jasonNote/favicon.ico</icon>
-  <updated>2025-04-16T15:20:07.554Z</updated>
+  <updated>2025-04-16T16:04:52.541Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://newzone.top/jasonNote/atom.xml"/>
   <link rel="alternate" href="https://newzone.top/jasonNote/"/>
+  <category term="大模型"/>
+  <category term="算法"/>
   <category term="工具"/>
-  <category term="使用指南"/>
+  <entry>
+    <title type="text">MOE</title>
+    <id>https://newzone.top/jasonNote/posts/2024-03-01-blog_example.html</id>
+    <link href="https://newzone.top/jasonNote/posts/2024-03-01-blog_example.html"/>
+    <updated>2025-04-16T16:03:18.000Z</updated>
+    <summary type="html"><![CDATA[<p>博客文章内容，支持 Markdown 和 HTML 语言。</p>
+]]></summary>
+    <content type="html"><![CDATA[<p>博客文章内容，支持 Markdown 和 HTML 语言。</p>
+]]></content>
+    <category term="大模型"/>
+    <category term="算法"/>
+    <published>2025-04-16T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">博客文章样例 2</title>
     <id>https://newzone.top/jasonNote/posts/2024-03-02-blog_example2.html</id>
@@ -21,17 +35,5 @@
 ]]></content>
     <category term="工具"/>
     <published>2024-03-02T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">博客文章样例</title>
-    <id>https://newzone.top/jasonNote/posts/2024-03-01-blog_example.html</id>
-    <link href="https://newzone.top/jasonNote/posts/2024-03-01-blog_example.html"/>
-    <updated>2025-04-16T15:06:34.000Z</updated>
-    <summary type="html"><![CDATA[<p>博客文章内容，支持 Markdown 和 HTML 语言。</p>
-]]></summary>
-    <content type="html"><![CDATA[<p>博客文章内容，支持 Markdown 和 HTML 语言。</p>
-]]></content>
-    <category term="使用指南"/>
-    <published>2024-03-01T00:00:00.000Z</published>
   </entry>
 </feed>

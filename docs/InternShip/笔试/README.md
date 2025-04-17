@@ -1,7 +1,7 @@
 ---
 article: false
 index: false
-title: 笔试汇总系列
+title: 笔试汇总
 icon: fa6-solid:icons
 ---
 
@@ -11,6 +11,6 @@ icon: fa6-solid:icons
 
 <!-- markdownlint-disable MD033 -->
 
-<Catalog base='/InterShip/笔试/'/>
+<Catalog base='/InternShip/笔试/'/>
 
 <!-- markdownlint-enable MD033 -->

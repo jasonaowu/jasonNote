@@ -4,10 +4,10 @@ home: true
 layout: BlogHome
 # icon: fa6-solid:house-crack
 icon: https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/blog-logo.webp
-title: 互联网小白
+title: JasonCC
 #heroImage: /logo.svg
-heroText: 互联网小白
-tagline: 盛年不重来，一日难再晨
+heroText: JasonCC
+tagline: 我本微末凡尘，但也心向天空。
 # bgImage: https://img.newzone.top/home-bg-1.jpg
 bgImage: https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/gintama-gintoki-sakata-anime-desktop-wallpaper-4k-small.webp
 #projects:

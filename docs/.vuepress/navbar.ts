@@ -17,12 +17,12 @@ export default navbar([
         link: "apps/Chrome",
       },
       {
-        text: "服务/专题",
+        text: "Intership",
         icon: "",
         prefix: "",
         children: [
           {
-            text: "专题示例",
+            text: "搜广推",
             icon: "fa6-solid:dice-d20",
             link: "apps/topic/",
           },

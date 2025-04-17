@@ -73,7 +73,7 @@ export default hopeTheme(
       articleInfo: ["Date", "PageView", "Category", "Tag", "ReadingTime"],
       name: "JasonCC",
       avatar: "/avatar_self.webp",
-      description: "算法小菜鸡,沉迷Apex、CSGO、Valorant、三角洲行动,热衷于研究开源软件和新技术,喜欢看动漫",
+      description: "算法小菜鸡<br>沉迷Apex、CSGO、Valorant、三角洲行动<br>热衷于研究开源软件和新技术<br>喜欢看动漫",
       intro: "/intro.html",
       medias: {
         GitHub: "https://github.com/jasonaowu",

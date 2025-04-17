@@ -90,15 +90,15 @@ export default sidebar({
         // "README.md",
         {
           text: "微调",
-          icon: "fa6-solid:tree",
+          icon: "fa6-solid:bolt",
           collapsible: true,
           children: ["LoRA.md", "SFT"],
         },
         {
           text: "框架",
-          icon: "fa6-solid:image",
+          icon: "fa6-solid:sliders",
           collapsible: true,
-          children: ["RAG.md"],
+          children: ["RAG.md"], 
         },
       ],
     },

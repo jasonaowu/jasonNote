@@ -31,8 +31,9 @@ export default sidebar({
       ],
     },
     {
-      text: "机器学习",
-      icon: "fa6-solid:ticket-simple",
+      text: "🤖 机器学习",
+      // icon: "fa6-solid:ticket-simple",
+      icon: "fa6-light: sitemap",
       prefix: "/ML/",
       collapsible: true,
       children: [

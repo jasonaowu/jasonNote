@@ -11,6 +11,6 @@ icon: fa6-solid:icons
 
 <!-- markdownlint-disable MD033 -->
 
-<Catalog base='/InterShip/面试/'/>
+<Catalog base='/InternShip/面试/'/>
 
 <!-- markdownlint-enable MD033 -->

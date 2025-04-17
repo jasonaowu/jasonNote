@@ -111,8 +111,8 @@ export default sidebar({
         // "README.md",
         {
           text: "笔试",
-          icon: "fa6-solid:",
-          link: "InternShip/笔试/"
+          icon: "fa6-solid:pen",  // 添加了一个合适的图标
+          link: "/InternShip/笔试/"  // 修改：添加了开头的斜杠
         },
         {
           text: "面试",

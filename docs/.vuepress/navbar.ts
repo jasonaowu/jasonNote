@@ -10,7 +10,7 @@ export default navbar([
     icon: "fa6-solid:bars-staggered",
     prefix: "/",
     children: [
-      "apps/Applist",
+      // "apps/Applist",
       {
         text: "常用扩展",
         icon: "fa6-brands:chrome",

@@ -1,9 +1,9 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
-  "title": "LearnData 开源笔记",
+  "title": "JasonCC Blog",
   "home_page_url": "https://newzone.top/jasonNote/",
   "feed_url": "https://newzone.top/jasonNote/feed.json",
-  "description": "开源工具、效率方法、心理学探索的自我提升笔记，记录并输出一切能让自己提升的知识。",
+  "description": "记录并输出一切感兴趣的知识",
   "favicon": "https://newzone.top/jasonNote/favicon.ico",
   "items": [
     {

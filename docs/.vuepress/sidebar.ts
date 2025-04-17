@@ -39,13 +39,13 @@ export default sidebar({
         "README.md",
         {
           text: "树",
-          icon: "fa-duotone fa-tree ",
+          icon: "fa6-solid:fa-tree",
           collapsible: true,
-          children: ["XGboost.md", "Cart.md"],
+          children: ["XGBoost.md", "Cart.md"],
         },
         {
           text: "聚类",
-          icon: "fa-sharp-duotone fa-solid fa-brain-circuit",
+          icon: "fa6-solid:fa-border-all",
           collapsible: true,
           children: ["KNN.md"],
         },

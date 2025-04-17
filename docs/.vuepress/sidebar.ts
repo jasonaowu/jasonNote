@@ -31,9 +31,9 @@ export default sidebar({
       ],
     },
     {
-      text: "🤖 机器学习",
+      text: "⚓ 机器学习",
       // icon: "fa6-solid:ticket-simple",
-      icon: "fa6-light: sitemap",
+      icon: "",
       prefix: "/ML/",
       collapsible: true,
       children: [
@@ -49,6 +49,56 @@ export default sidebar({
           icon: "fa6-solid:border-all",
           collapsible: true,
           children: ["KNN.md"],
+        },
+      ],
+    },
+    {
+      text: "🍉 深度学习",
+      // icon: "fa6-solid:ticket-simple",
+      icon: "",
+      prefix: "/DL/",
+      collapsible: true,
+      children: [
+        // "README.md",
+        {
+          text: "基础知识",
+          icon: "fa6-solid:tree",
+          collapsible: true,
+          children: ["激活函数.md"],
+        },
+        {
+          text: "CV",
+          icon: "fa6-solid:image",
+          collapsible: true,
+          children: ["ResNet.md"],
+        },
+        {
+          text: "NLP",
+          icon: "fa6-solid:spell-check",
+          collapsible: true,
+          children: ["Word2Vec.md"],
+        },
+      ],
+    },
+    {
+      text: "🍡 大模型",
+      // icon: "fa6-solid:ticket-simple",
+      icon: "",
+      prefix: "/LLM/",
+      collapsible: true,
+      children: [
+        // "README.md",
+        {
+          text: "微调",
+          icon: "fa6-solid:tree",
+          collapsible: true,
+          children: ["LoRA.md", "SFT"],
+        },
+        {
+          text: "框架",
+          icon: "fa6-solid:image",
+          collapsible: true,
+          children: ["RAG.md"],
         },
       ],
     },
@@ -71,20 +121,20 @@ export default sidebar({
       ],
     },
     
-    {
-      text: "🛖 生活记录",
-      icon: "",
-      prefix: "/family/",
-      collapsible: true,
-      children: "structure",
-    },
-    {
-      text: "加密目录",
-      icon: "material-symbols:encrypted",
-      prefix: "/encrypt/",
-      collapsible: true,
-      children: "structure",
-    },
+    // {
+    //   text: "🛖 生活记录",
+    //   icon: "",
+    //   prefix: "/family/",
+    //   collapsible: true,
+    //   children: "structure",
+    // },
+    // {
+    //   text: "加密目录",
+    //   icon: "material-symbols:encrypted",
+    //   prefix: "/encrypt/",
+    //   collapsible: true,
+    //   children: "structure",
+    // },
     {
       text: "博客文章",
       icon: "fa6-solid:feather-pointed",

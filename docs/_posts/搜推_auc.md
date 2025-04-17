@@ -1,6 +1,6 @@
 ---
-title: 博客文章样例 2
-date: 2024-03-02
+title: auc and gauc
+date: 2024-04-17
 category:
   - 工具
 tag:

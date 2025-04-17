@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://newzone.top/jasonNote/sitemap.xml
+Sitemap: https://jasonaowu.github.io/jasonNote/jasonNote/sitemap.xml

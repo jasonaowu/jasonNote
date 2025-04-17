@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://newzone.top/jasonNote/rss.xsl"?>
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://jasonaowu.github.io/jasonNote/jasonNote/rss.xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <atom:link href="https://newzone.top/jasonNote/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://jasonaowu.github.io/jasonNote/jasonNote/rss.xml" rel="self" type="application/rss+xml"/>
     <title>JasonCC Blog</title>
-    <link>https://newzone.top/jasonNote/</link>
+    <link>https://jasonaowu.github.io/jasonNote/jasonNote/</link>
     <description>记录并输出一切感兴趣的知识</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 17 Apr 2025 07:14:19 GMT</pubDate>
-    <lastBuildDate>Thu, 17 Apr 2025 07:14:19 GMT</lastBuildDate>
+    <pubDate>Thu, 17 Apr 2025 07:23:41 GMT</pubDate>
+    <lastBuildDate>Thu, 17 Apr 2025 07:23:41 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>大模型</category>
@@ -15,9 +15,9 @@
     <category>工具</category>
     <item>
       <title>MOE</title>
-      <link>https://newzone.top/jasonNote/posts/MOE.html</link>
-      <guid>https://newzone.top/jasonNote/posts/MOE.html</guid>
-      <source url="https://newzone.top/jasonNote/rss.xml">MOE</source>
+      <link>https://jasonaowu.github.io/jasonNote/jasonNote/posts/MOE.html</link>
+      <guid>https://jasonaowu.github.io/jasonNote/jasonNote/posts/MOE.html</guid>
+      <source url="https://jasonaowu.github.io/jasonNote/jasonNote/rss.xml">MOE</source>
       <description>博客文章内容，支持 Markdown 和 HTML 语言。</description>
       <category>大模型</category>
       <category>算法</category>
@@ -27,9 +27,9 @@
     </item>
     <item>
       <title>auc and gauc</title>
-      <link>https://newzone.top/jasonNote/posts/%E6%90%9C%E6%8E%A8_auc.html</link>
-      <guid>https://newzone.top/jasonNote/posts/%E6%90%9C%E6%8E%A8_auc.html</guid>
-      <source url="https://newzone.top/jasonNote/rss.xml">auc and gauc</source>
+      <link>https://jasonaowu.github.io/jasonNote/jasonNote/posts/%E6%90%9C%E6%8E%A8_auc.html</link>
+      <guid>https://jasonaowu.github.io/jasonNote/jasonNote/posts/%E6%90%9C%E6%8E%A8_auc.html</guid>
+      <source url="https://jasonaowu.github.io/jasonNote/jasonNote/rss.xml">auc and gauc</source>
       <description>博客文章内容，支持 Markdown 和 HTML 语言。</description>
       <category>工具</category>
       <pubDate>Wed, 17 Apr 2024 00:00:00 GMT</pubDate>

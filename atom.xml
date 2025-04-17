@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://newzone.top/jasonNote/atom.xsl"?>
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://jasonaowu.github.io/jasonNote/jasonNote/atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
-  <id>https://newzone.top/jasonNote/</id>
+  <id>https://jasonaowu.github.io/jasonNote/jasonNote/</id>
   <title>JasonCC Blog</title>
   <subtitle>记录并输出一切感兴趣的知识</subtitle>
-  <icon>https://newzone.top/jasonNote/favicon.ico</icon>
-  <updated>2025-04-17T07:14:19.877Z</updated>
+  <icon>https://jasonaowu.github.io/jasonNote/jasonNote/favicon.ico</icon>
+  <updated>2025-04-17T07:23:41.255Z</updated>
   <generator>@vuepress/plugin-feed</generator>
-  <link rel="self" href="https://newzone.top/jasonNote/atom.xml"/>
-  <link rel="alternate" href="https://newzone.top/jasonNote/"/>
+  <link rel="self" href="https://jasonaowu.github.io/jasonNote/jasonNote/atom.xml"/>
+  <link rel="alternate" href="https://jasonaowu.github.io/jasonNote/jasonNote/"/>
   <category term="大模型"/>
   <category term="算法"/>
   <category term="工具"/>
   <entry>
     <title type="text">MOE</title>
-    <id>https://newzone.top/jasonNote/posts/MOE.html</id>
-    <link href="https://newzone.top/jasonNote/posts/MOE.html"/>
+    <id>https://jasonaowu.github.io/jasonNote/jasonNote/posts/MOE.html</id>
+    <link href="https://jasonaowu.github.io/jasonNote/jasonNote/posts/MOE.html"/>
     <updated>2025-04-17T06:35:43.000Z</updated>
     <summary type="html"><![CDATA[<p>博客文章内容，支持 Markdown 和 HTML 语言。</p>
 ]]></summary>
@@ -26,8 +26,8 @@
   </entry>
   <entry>
     <title type="text">auc and gauc</title>
-    <id>https://newzone.top/jasonNote/posts/%E6%90%9C%E6%8E%A8_auc.html</id>
-    <link href="https://newzone.top/jasonNote/posts/%E6%90%9C%E6%8E%A8_auc.html"/>
+    <id>https://jasonaowu.github.io/jasonNote/jasonNote/posts/%E6%90%9C%E6%8E%A8_auc.html</id>
+    <link href="https://jasonaowu.github.io/jasonNote/jasonNote/posts/%E6%90%9C%E6%8E%A8_auc.html"/>
     <updated>2025-04-17T06:35:43.000Z</updated>
     <summary type="html"><![CDATA[<p>博客文章内容，支持 Markdown 和 HTML 语言。</p>
 ]]></summary>

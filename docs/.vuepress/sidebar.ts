@@ -16,7 +16,7 @@ export default sidebar({
       link: "",
       collapsible: true,
       children: [
-        "Applist.md",
+        // "Applist.md",
         "toolbox.md",
         "encrypt03.md",
         {
@@ -24,32 +24,6 @@ export default sidebar({
           icon: "fa6-solid:code-compare",
           collapsible: true,
           children: ["design.md"],
-        },
-      ],
-    },
-    {
-      text: "🌐 页面开发",
-      icon: "",
-      prefix: "/web/",
-      link: "",
-      collapsible: true,
-      children: "structure",
-    },
-    {
-      text: "🏗️ 网站部署",
-      icon: "",
-      prefix: "/deploy/",
-      link: "",
-      collapsible: true,
-      children: [
-        "Static.md",
-        "CloudServices.md",
-        "VPS.md",
-        {
-          text: "部署工具",
-          icon: "fa6-brands:windows",
-          collapsible: true,
-          children: ["GitHub.md", "Cloudflare.md", "MySQL.md", "DNS.md"],
         },
       ],
     },

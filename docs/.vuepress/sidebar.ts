@@ -31,21 +31,21 @@ export default sidebar({
       ],
     },
     {
-      text: "🔡 机器学习",
-      icon: "",
+      text: "机器学习",
+      icon: "fa6-solid:ticket-simple",
       prefix: "/ML/",
       collapsible: true,
       children: [
-        "README.md",
+        // "README.md",
         {
           text: "树",
-          icon: "fa6-solid:fa-tree",
+          icon: "fa6-solid:tree",
           collapsible: true,
           children: ["XGBoost.md", "Cart.md"],
         },
         {
           text: "聚类",
-          icon: "fa6-solid:fa-border-all",
+          icon: "fa6-solid:border-all",
           collapsible: true,
           children: ["KNN.md"],
         },

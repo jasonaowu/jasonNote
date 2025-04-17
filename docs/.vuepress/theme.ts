@@ -5,10 +5,10 @@ import sidebar from "./sidebar.js";
 export default hopeTheme(
   {
     // 主题选项：https://theme-hope.vuejs.press/zh/config/theme/layout.html
-    hostname: "https://newzone.top",
+    hostname: "https://jasonaowu.github.io/jasonNote",
     author: {
-      name: "LearnData",
-      url: "https://newzone.top",
+      name: "JasonCC",
+      url: "https://jasonaowu.github.io/jasonNote",
     },
 
     favicon: "/favicon.ico",
@@ -40,7 +40,8 @@ export default hopeTheme(
     fullscreen: true,
 
     // 默认为 GitHub. 同时也可以是一个完整的 URL
-    repo: "rockbenben/LearnData",
+    // repo: "rockbenben/LearnData",
+    repi: "jasonaowu/jasonNote",
     // 自定义仓库链接文字。默认从 `repo` 中自动推断为 "GitHub" / "GitLab" / "Gitee" / "Bitbucket" 其中之一，或是 "Source"。
     repoLabel: "GitHub",
     // 是否在导航栏内显示仓库链接，默认为 `true`
@@ -70,18 +71,18 @@ export default hopeTheme(
     // 主题功能选项：https://theme-hope.vuejs.press/zh/config/theme/feature.html
     blog: {
       articleInfo: ["Date", "PageView", "Category", "Tag", "ReadingTime"],
-      name: "清顺",
+      name: "JasonCC",
       avatar: "/avatar_self.webp",
-      description: "迷信新工具，热衷于研究开源软件、心理学理论，定期分享探索成果",
+      description: "算法小菜鸡,沉迷Apex、CSGO、Valorant、三角洲行动,热衷于研究开源软件和新技术,喜欢看动漫",
       intro: "/intro.html",
       medias: {
-        GitHub: "https://github.com/rockbenben",
-        Zhihu: "https://www.zhihu.com/people/qingwhat",
-        少数派: { icon: "https://newzone.top/icons/sspai.svg", link: "https://sspai.com/u/zqj05i4v/posts" },
-        Wechat: "https://img.newzone.top/wechat.svg",
-        Email: "mailto:learndata@newzone.top",
-        Discord: "https://discord.gg/PZTQfJ4GjX",
-        RSS: "/rss.xml",
+        GitHub: "https://github.com/jasonaowu",
+        // Zhihu: "https://www.zhihu.com/people/qingwhat",
+        // 少数派: { icon: "https://newzone.top/icons/sspai.svg", link: "https://sspai.com/u/zqj05i4v/posts" },
+        // Wechat: "https://img.newzone.top/wechat.svg",
+        Email: "jasonaowu@163.com",
+        // Discord: "https://discord.gg/PZTQfJ4GjX",
+        // RSS: "/rss.xml",
       },
     },
 

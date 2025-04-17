@@ -93,7 +93,7 @@ export default sidebar({
           icon: "fa6-solid:bolt",
           collapsible: false,
           // children: ["LoRA.md", "SFT"],
-          link: "LLM/微调/"
+          link: "/LLM/微调/"
         },
         {
           text: "框架",

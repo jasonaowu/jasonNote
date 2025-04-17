@@ -200,7 +200,7 @@ export default hopeTheme(
         // 这会加密整个 encrypt 目录，并且两个密码都是可用的
         "/encrypt/": {
           password: ["1234", "5678"],
-          hint: "从 xxx 获取密码",
+          hint: "从 JasonCC处获取密码(如果你认识她)",
         },
         // 这只会加密 /apps/encrypt03.html 页面
         "/apps/encrypt03.html": {

@@ -11,6 +11,6 @@ icon: fa6-solid:icons
 
 <!-- markdownlint-disable MD033 -->
 
-<Catalog base='/LLM/微调/' />
+<Catalog base='/LLM/微调/'/>
 
 <!-- markdownlint-enable MD033 -->

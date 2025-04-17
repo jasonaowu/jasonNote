@@ -102,6 +102,26 @@ export default sidebar({
       ],
     },
     {
+      text: "🍎 InterShip",
+      // icon: "fa6-solid:ticket-simple",
+      icon: "",
+      prefix: "/InterShip/",
+      collapsible: true,
+      children: [
+        // "README.md",
+        {
+          text: "笔试",
+          icon: "fa6-solid:",
+          link: "InterShip/笔试/"
+        },
+        {
+          text: "面试",
+          icon: "fa6-solid:bolt",
+          link: "/InterShip/面试/"
+        },
+      ]
+    },
+    {
       text: "🧰 软件应用",
       icon: "",
       prefix: "/apps/",
@@ -135,7 +155,7 @@ export default sidebar({
     //   children: "structure",
     // },
     {
-      text: "博客文章",
+      text: " 博客文章",
       icon: "fa6-solid:feather-pointed",
       prefix: "/_posts/",
       link: "/blog",
@@ -146,6 +166,8 @@ export default sidebar({
   // 专题区（独立侧边栏）
   "/apps/topic/": "structure",
   "/LLM/微调/": "structure",
+  "/InterShip/笔试/": "structure",
+  "/InterShip/面试/": "structure",
   // 如果你不想使用默认侧边栏，可以按照路径自行设置。但需要去掉下方配置中的注释，以避免博客和时间轴出现异常。_posts 目录可以不存在。
   /*"/_posts/": [
     {

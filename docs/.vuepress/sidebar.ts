@@ -7,26 +7,8 @@ export default sidebar({
     // "/DailyRoutine",
     // "/Fitness",
     // 读书笔记架构更换到 docsify，不能使用相对链接
-    { text: "读书笔记", icon: "fa6-brands:readme", link: "https://jasonaowu.github.io/jasonNote/reading/" },
+    // { text: "读书笔记", icon: "fa6-brands:readme", link: "https://jasonaowu.github.io/jasonNote/reading/" },
     // 指定显示页面
-    {
-      text: "🧰 应用手册",
-      icon: "",
-      prefix: "/apps/",
-      link: "",
-      collapsible: true,
-      children: [
-        // "Applist.md",
-        "toolbox.md",
-        "encrypt03.md",
-        {
-          text: "其他",
-          icon: "fa6-solid:code-compare",
-          collapsible: true,
-          children: ["design.md"],
-        },
-      ],
-    },
     {
       text: "🔡 代码编程",
       icon: "",
@@ -48,6 +30,46 @@ export default sidebar({
         },
       ],
     },
+    {
+      text: "🔡 机器学习",
+      icon: "",
+      prefix: "/ML/",
+      collapsible: true,
+      children: [
+        "README.md",
+        {
+          text: "树",
+          icon: "fa-duotone fa-tree ",
+          collapsible: true,
+          children: ["XGboost.md", "Cart.md"],
+        },
+        {
+          text: "聚类",
+          icon: "fa-sharp-duotone fa-solid fa-brain-circuit",
+          collapsible: true,
+          children: ["KNN.md"],
+        },
+      ],
+    },
+    {
+      text: "🧰 软件应用",
+      icon: "",
+      prefix: "/apps/",
+      link: "",
+      collapsible: true,
+      children: [
+        // "Applist.md",
+        "Chrome.md",
+        "toolbox.md",
+        // {
+        //   text: "其他",
+        //   icon: "fa6-solid:code-compare",
+        //   collapsible: true,
+        //   children: ["design.md"],
+        // },
+      ],
+    },
+    
     {
       text: "🛖 生活记录",
       icon: "",

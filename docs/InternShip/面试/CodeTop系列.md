@@ -92,6 +92,51 @@ else:
 ```
 ## 归并排序
 
+步骤：
+
+1. **分割（Divide）**：将数组分为等长的两个子数组，递归地对这两个子数组进行排序。
+2. **合并（Merge）**：将两个已排序的子数组合并成一个大数组，并保持排序的顺序。
+
+- 递归边界：数组中只有1个元素
+
+```python
+ class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        # 归并排序
+        def merge_sort(nums):
+            if len(nums) <= 1:
+                return nums  
+            mid = len(nums) // 2
+            left = merge_sort(nums[:mid])  # left 为左边的数组
+            right = merge_sort(nums[mid:]) # right 为右边的数组
+            return merge(left, right)     # 合并左右两个部分
+        
+        def merge(left, right):
+            sorted_nums = []
+            while left and right:  # 两个数组均不为空
+                if left[0] < right[0]:
+                    sorted_nums.append(left.pop(0))
+                else:
+                    sorted_nums.append(right.pop(0))
+            while left: sorted_nums.append(left.pop(0))
+            while right: sorted_nums.append(right.pop(0))
+            return sorted_nums
+        
+        # merge_sort(nums)
+        sorted_nums = merge_sort(nums)
+        print(sorted_nums)
+        return sorted_nums[len(nums) - k]
+```
+
+> 在 Python 中，`pop(0)` 是列表的一个方法，用于从列表中删除并返回 **第一个元素**。具体到 `left.pop(0)`，它执行以下操作：
+>
+> 1. **`pop()`**：`pop()` 方法用来移除并返回列表中的一个元素，默认是移除并返回 **最后一个元素**。
+> 2. **`pop(0)`**：当传入参数 `0` 时，`pop(0)` 会移除并返回列表中的 **第一个元素**，即列表的索引为 `0` 的元素。
+
+
+
+
+
 
 
 ## 堆排序

@@ -11,6 +11,12 @@ importers:
       '@vuepress/bundler-webpack':
         specifier: 2.0.0-rc.20
         version: 2.0.0-rc.20
+      katex:
+        specifier: 0.16.8
+        version: 0.16.8
+      markdown-it-katex:
+        specifier: ^2.0.3
+        version: 2.0.3
       vue:
         specifier: ^3.5.13
         version: 3.5.13
@@ -19,7 +25,7 @@ importers:
         version: 2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)
       vuepress-theme-hope:
         specifier: 2.0.0-rc.73
-        version: 2.0.0-rc.73(@vuepress/plugin-docsearch@2.0.0-rc.80(@algolia/client-search@5.20.3)(search-insights@2.13.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-feed@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-slimsearch@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@waline/client@3.5.5)(dashjs@4.7.4)(hls.js@1.5.20)(markdown-it@14.1.0)(mathjax-full@3.2.2)(sass-embedded@1.85.1)(sass-loader@16.0.5(sass-embedded@1.85.1)(webpack@5.98.0))(vidstack@1.12.13)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
+        version: 2.0.0-rc.73(@vuepress/plugin-docsearch@2.0.0-rc.80(@algolia/client-search@5.20.3)(search-insights@2.13.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-feed@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-slimsearch@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@waline/client@3.5.5)(dashjs@4.7.4)(hls.js@1.5.20)(katex@0.16.8)(markdown-it@14.1.0)(mathjax-full@3.2.2)(sass-embedded@1.85.1)(sass-loader@16.0.5(sass-embedded@1.85.1)(webpack@5.98.0))(vidstack@1.12.13)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
     devDependencies:
       '@vuepress/plugin-docsearch':
         specifier: 2.0.0-rc.80
@@ -2522,6 +2528,14 @@ packages:
     resolution: {integrity: sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==}
     engines: {node: '>=0.10.0'}
 
+  katex@0.16.8:
+    resolution: {integrity: sha512-ftuDnJbcbOckGY11OO+zg3OofESlbR5DRl2cmN8HeWeeFIV7wTXvAOx8kEjZjobhA+9wh2fbKeO6cdcA9Mnovg==}
+    hasBin: true
+
+  katex@0.6.0:
+    resolution: {integrity: sha512-rS4mY3SvHYg5LtQV6RBcK0if7ur6plyEukAOV+jGGPqFImuzu8fHL6M752iBmRGoUyF0bhZbAPoezehn7xYksA==}
+    hasBin: true
+
   kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
@@ -2561,28 +2575,24 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   lightningcss-linux-arm64-musl@1.29.1:
     resolution: {integrity: sha512-UKMFrG4rL/uHNgelBsDwJcBqVpzNJbzsKkbI3Ja5fg00sgQnHw/VrzUTEc4jhZ+AN2BvQYz/tkHu4vt1kLuJyw==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   lightningcss-linux-x64-gnu@1.29.1:
     resolution: {integrity: sha512-u1S+xdODy/eEtjADqirA774y3jLcm8RPtYztwReEXoZKdzgsHYPl0s5V52Tst+GKzqjebkULT86XMSxejzfISw==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   lightningcss-linux-x64-musl@1.29.1:
     resolution: {integrity: sha512-L0Tx0DtaNUTzXv0lbGCLB/c/qEADanHbu4QdcNOXLIe1i8i22rZRpbT3gpWYsCh9aSL9zFujY/WmEXIatWvXbw==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   lightningcss-win32-arm64-msvc@1.29.1:
     resolution: {integrity: sha512-QoOVnkIEFfbW4xPi+dpdft/zAKmgLgsRHfJalEPYuJDOWf7cLQzYg0DEh8/sn737FaeMJxHZRc1oBreiwZCjog==}
@@ -2669,6 +2679,9 @@ packages:
   markdown-it-emoji@3.0.0:
     resolution: {integrity: sha512-+rUD93bXHubA4arpEZO3q80so0qgoFJEKRkRbjKX8RTdca89v2kfyF+xR3i2sQTwql9tpPZPOQN5B+PunspXRg==}
 
+  markdown-it-katex@2.0.3:
+    resolution: {integrity: sha512-nUkkMtRWeg7OpdflamflE/Ho/pWl64Lk9wNBKOmaj33XkQdumhXAIYhI0WO03GeiycPCsxbmX536V5NEXpC3Ng==}
+
   markdown-it@14.1.0:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
     hasBin: true
@@ -2695,6 +2708,9 @@ packages:
     resolution: {integrity: sha512-dgLIeKGLx5FwziAnsk4ONoGwHwGPJzselimvlVskE9XLN4Orv9u2VA3GWw/lYUqjfA0rUT/6fqKwfZJapP9BEg==}
     engines: {node: '>= 18'}
     hasBin: true
+
+  match-at@0.1.1:
+    resolution: {integrity: sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q==}
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -4717,12 +4733,13 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
 
-  '@mdit/plugin-katex-slim@0.16.7(markdown-it@14.1.0)':
+  '@mdit/plugin-katex-slim@0.16.7(katex@0.16.8)(markdown-it@14.1.0)':
     dependencies:
       '@mdit/helper': 0.16.0(markdown-it@14.1.0)
       '@mdit/plugin-tex': 0.16.0(markdown-it@14.1.0)
       '@types/markdown-it': 14.1.2
     optionalDependencies:
+      katex: 0.16.8
       markdown-it: 14.1.0
 
   '@mdit/plugin-mark@0.16.0(markdown-it@14.1.0)':
@@ -5415,15 +5432,16 @@ snapshots:
       - markdown-it
       - typescript
 
-  '@vuepress/plugin-markdown-math@2.0.0-rc.80(markdown-it@14.1.0)(mathjax-full@3.2.2)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))':
+  '@vuepress/plugin-markdown-math@2.0.0-rc.80(katex@0.16.8)(markdown-it@14.1.0)(mathjax-full@3.2.2)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))':
     dependencies:
-      '@mdit/plugin-katex-slim': 0.16.7(markdown-it@14.1.0)
+      '@mdit/plugin-katex-slim': 0.16.7(katex@0.16.8)(markdown-it@14.1.0)
       '@mdit/plugin-mathjax-slim': 0.16.0(markdown-it@14.1.0)(mathjax-full@3.2.2)
       '@types/markdown-it': 14.1.2
       '@vuepress/helper': 2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
       vue: 3.5.13
       vuepress: 2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)
     optionalDependencies:
+      katex: 0.16.8
       mathjax-full: 3.2.2
     transitivePeerDependencies:
       - markdown-it
@@ -6947,6 +6965,14 @@ snapshots:
 
   jsonpointer@5.0.1: {}
 
+  katex@0.16.8:
+    dependencies:
+      commander: 8.3.0
+
+  katex@0.6.0:
+    dependencies:
+      match-at: 0.1.1
+
   kind-of@6.0.3: {}
 
   launch-editor@2.10.0:
@@ -7075,6 +7101,10 @@ snapshots:
 
   markdown-it-emoji@3.0.0: {}
 
+  markdown-it-katex@2.0.3:
+    dependencies:
+      katex: 0.6.0
+
   markdown-it@14.1.0:
     dependencies:
       argparse: 2.0.1
@@ -7110,6 +7140,8 @@ snapshots:
       marked: 15.0.7
 
   marked@15.0.7: {}
+
+  match-at@0.1.1: {}
 
   math-intrinsics@1.1.0: {}
 
@@ -8314,7 +8346,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  vuepress-theme-hope@2.0.0-rc.73(@vuepress/plugin-docsearch@2.0.0-rc.80(@algolia/client-search@5.20.3)(search-insights@2.13.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-feed@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-slimsearch@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@waline/client@3.5.5)(dashjs@4.7.4)(hls.js@1.5.20)(markdown-it@14.1.0)(mathjax-full@3.2.2)(sass-embedded@1.85.1)(sass-loader@16.0.5(sass-embedded@1.85.1)(webpack@5.98.0))(vidstack@1.12.13)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)):
+  vuepress-theme-hope@2.0.0-rc.73(@vuepress/plugin-docsearch@2.0.0-rc.80(@algolia/client-search@5.20.3)(search-insights@2.13.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-feed@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-slimsearch@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@waline/client@3.5.5)(dashjs@4.7.4)(hls.js@1.5.20)(katex@0.16.8)(markdown-it@14.1.0)(mathjax-full@3.2.2)(sass-embedded@1.85.1)(sass-loader@16.0.5(sass-embedded@1.85.1)(webpack@5.98.0))(vidstack@1.12.13)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)):
     dependencies:
       '@vuepress/helper': 2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
       '@vuepress/plugin-active-header-links': 2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
@@ -8331,7 +8363,7 @@ snapshots:
       '@vuepress/plugin-markdown-hint': 2.0.0-rc.80(markdown-it@14.1.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
       '@vuepress/plugin-markdown-image': 2.0.0-rc.80(markdown-it@14.1.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
       '@vuepress/plugin-markdown-include': 2.0.0-rc.80(markdown-it@14.1.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
-      '@vuepress/plugin-markdown-math': 2.0.0-rc.80(markdown-it@14.1.0)(mathjax-full@3.2.2)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
+      '@vuepress/plugin-markdown-math': 2.0.0-rc.80(katex@0.16.8)(markdown-it@14.1.0)(mathjax-full@3.2.2)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
       '@vuepress/plugin-markdown-stylize': 2.0.0-rc.80(markdown-it@14.1.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
       '@vuepress/plugin-markdown-tab': 2.0.0-rc.80(markdown-it@14.1.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
       '@vuepress/plugin-notice': 2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))

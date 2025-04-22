@@ -35,6 +35,8 @@
     "prettier": "^3.5.3",
     "sass-embedded": "^1.85.1",
     "sass-loader": "^16.0.5",
-    "vidstack": "^1.12.13"
+    "vidstack": "^1.12.13",
+    "vuepress-plugin-katex": "^0.3.0",
+    "vuepress-plugin-mathjax": "^1.2.8"
   }
 }

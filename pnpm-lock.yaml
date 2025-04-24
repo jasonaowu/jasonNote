@@ -21,6 +21,9 @@ importers:
         specifier: 2.0.0-rc.73
         version: 2.0.0-rc.73(@vuepress/plugin-docsearch@2.0.0-rc.80(@algolia/client-search@5.20.3)(search-insights@2.13.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-feed@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@vuepress/plugin-slimsearch@2.0.0-rc.80(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13)))(@waline/client@3.5.5)(dashjs@4.7.4)(hls.js@1.5.20)(katex@0.16.22)(markdown-it@14.1.0)(mathjax-full@3.2.2)(sass-embedded@1.85.1)(sass-loader@16.0.5(sass-embedded@1.85.1)(webpack@5.98.0))(vidstack@1.12.13)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
     devDependencies:
+      '@mdit/plugin-katex':
+        specifier: ^0.16.7
+        version: 0.16.7(markdown-it@14.1.0)
       '@vuepress/plugin-docsearch':
         specifier: 2.0.0-rc.80
         version: 2.0.0-rc.80(@algolia/client-search@5.20.3)(search-insights@2.13.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-webpack@2.0.0-rc.20)(vue@3.5.13))
@@ -709,6 +712,15 @@ packages:
     peerDependenciesMeta:
       katex:
         optional: true
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-katex@0.16.7':
+    resolution: {integrity: sha512-W9lxYlAW8eWZxnYQfX82rTZ8o9dOf+5IXmfBzErr5es3rBETpNEETHzf7XINlNwGlLI206wtR/uM/p5buCUw1Q==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
       markdown-it:
         optional: true
 
@@ -2542,6 +2554,10 @@ packages:
   jsonpointer@5.0.1:
     resolution: {integrity: sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==}
     engines: {node: '>=0.10.0'}
+
+  katex@0.16.21:
+    resolution: {integrity: sha512-XvqR7FgOHtWupfMiigNzmh+MgUVmDGU2kXZm899ZkPfcuoPuFxyHmXsgATDpFZDAXCI8tvinaVcDo8PIIJSo4A==}
+    hasBin: true
 
   katex@0.16.22:
     resolution: {integrity: sha512-XCHRdUw4lf3SKBaJe4EvgqIuWwkPSo9XoeO8GjQW94Bp7TWv9hNhzZjZ+OH9yf1UmLygb7DIT5GSFQiyt16zYg==}
@@ -4776,6 +4792,15 @@ snapshots:
       katex: 0.16.22
       markdown-it: 14.1.0
 
+  '@mdit/plugin-katex@0.16.7(markdown-it@14.1.0)':
+    dependencies:
+      '@mdit/helper': 0.16.0(markdown-it@14.1.0)
+      '@mdit/plugin-tex': 0.16.0(markdown-it@14.1.0)
+      '@types/markdown-it': 14.1.2
+      katex: 0.16.21
+    optionalDependencies:
+      markdown-it: 14.1.0
+
   '@mdit/plugin-mark@0.16.0(markdown-it@14.1.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
@@ -7008,6 +7033,10 @@ snapshots:
       graceful-fs: 4.2.11
 
   jsonpointer@5.0.1: {}
+
+  katex@0.16.21:
+    dependencies:
+      commander: 8.3.0
 
   katex@0.16.22:
     dependencies:

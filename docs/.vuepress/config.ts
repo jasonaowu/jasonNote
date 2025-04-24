@@ -4,6 +4,7 @@ import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 
 import theme from "./theme.js";
 
+
 export default defineUserConfig({
   // 网站路径默认为主域名。如果网站部署在子路径下，比如 xxx.com/yyy，那么 base 应该被设置为 "/yyy/"
   base: "/jasonNote",
@@ -31,10 +32,23 @@ export default defineUserConfig({
     googleAnalyticsPlugin({
       // 设置你的 Analytics ID
       id: "G-RWKZTY2P9R",
-    }),
+    })
   ],
   bundler: webpackBundler({
     postcss: {},
     vue: {},
   }),
+  
+  // KaTeX配置
+  head: [
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css' }]
+  ],
+  markdown: {
+    importCode: {},
+    externalLinks: { target: '_blank', rel: 'noopener noreferrer' },
+    code: { lineNumbers: false },
+    math: {
+      katex: true,
+    },
+  },
 });

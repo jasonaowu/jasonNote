@@ -94,6 +94,11 @@ export default sidebar({
           link: "/LLM/微调/"
         },
         {
+          text: "模型",
+          icon: "fa6-solid:bolt",
+          link: "/LLM/热门模型/"
+        },
+        {
           text: "框架",
           icon: "fa6-solid:sliders",
           collapsible: true,
@@ -166,6 +171,7 @@ export default sidebar({
   // 专题区（独立侧边栏）
   "/apps/topic/": "structure",
   "/LLM/微调/": "structure",
+  "/LLM/热门模型/": "structure",
   "/InternShip/笔试/": "structure",
   "/InternShip/面试/": "structure",
   // 如果你不想使用默认侧边栏，可以按照路径自行设置。但需要去掉下方配置中的注释，以避免博客和时间轴出现异常。_posts 目录可以不存在。

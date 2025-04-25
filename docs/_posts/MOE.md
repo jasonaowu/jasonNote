@@ -25,6 +25,4 @@ order: -1
 $$
 \frac{\partial f}{\partial x} = 2x
 $$
-$$
-\frac{\partial f}{\partial x} = 2x
-$$
+$2x$

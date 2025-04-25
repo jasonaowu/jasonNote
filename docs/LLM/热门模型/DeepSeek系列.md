@@ -46,7 +46,7 @@ MOE 全称是 Mixture of Experts，也就是混合专家模型
 
 ![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=OWZjMTVhMjhjZjZiZGQwNmU4MmMyYzRmNmE2OWU0NmZfeVBFYzdQUEFxSDB0Mmg5RG1hSFZsMGx0N045bGd5aHpfVG9rZW46QU9ieWJvUjY1b3F4SU14c09Cb2NYbEd2bnJjXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
 
-![Transformer 对比](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=YjMwMmY0OTI2ZDQ0M2U5MDE2NzlkODc0OTQzNGFiMTNfY1Q3VlhRTGN3VjE4R05QVmF5UEoxbXpVR3hoeHRsb0dfVG9rZW46QU9ieWJvUjY1b3F4SU14c09Cb2NYbEd2bnJjXzE3NDU1ODU4NTk6MTc0NTU4OTQ1OV9WNA)
+![Transformer对比](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=YjMwMmY0OTI2ZDQ0M2U5MDE2NzlkODc0OTQzNGFiMTNfY1Q3VlhRTGN3VjE4R05QVmF5UEoxbXpVR3hoeHRsb0dfVG9rZW46QU9ieWJvUjY1b3F4SU14c09Cb2NYbEd2bnJjXzE3NDU1ODU4NTk6MTc0NTU4OTQ1OV9WNA)
 
 | ![FFn](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=N2JmZjZkZWJmNGIxMTU0ODRiYzc0MjkxMzVmMDYyNDRfc1JBcDQ5WW5yd2VoQ3ZWbXhlY2hJQUg3OXBXazJ5bk9fVG9rZW46UnA1M2Jja25Cb2c2MlJ4TTc5SGNtMFE1bmdlXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA) | ![MOE公式](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=NzYxYTQzZGFjNzBiMTJkMTNhMTNjMzZiYTcwOGQ3YzZfZkx4TW1IQmlqWDNKWFQ0cFh2akNXNm16dFEwemxsZ2dfVG9rZW46WE05UmJ3b0VNb05OUTN4MjdVTGNsSXYxbkNuXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -101,7 +101,7 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 ![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=MDMyZDYxYWRjNzU0ZTVlZTE3NGFjMWQ5MGZjZmM0N2ZfWkUzaVdXZjNCbmFKeDBxRUhzcHhFWllEZnJkemJLMVVfVG9rZW46VHZHUmJHTjZIbzhzRDF4MlNrcGMyT21HbnlnXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
 
-#### 共享专家隔离
+#### **共享专家隔离**
 
 我们将部分专家隔离出来，作为“共享专家”，始终被激活，用于捕捉和整合不同上下文中的共享知识。通过将共享知识压缩到这些共享专家中，减少了其他专家之间的冗余，从而提高了参数的效率，确保每个路由专家能够专注于独特的领域，保持高水平的专门化。
 
@@ -109,7 +109,7 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 ![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=MTA0NDg0OTRlZmM4YjM5ZTM3YmI4ZDY2ZjAzNzBmZDVfd3JETnpNVDAxRUdQVUtPZUxyT2Jxc3F5MTJZYW1LRGRfVG9rZW46S0ZhYWJOMVp6b1d4bzd4cEs2T2M0Qks2bmRjXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
 
-#### 负载均衡问题
+#### **负载均衡问题**
 
 > MOE 类模型的通病
 >
@@ -132,6 +132,10 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 ##### 设备级负载均衡
 
+
+
+
+
 ## DeepSeek-V2
 
 进一步优化负载均衡
@@ -150,49 +154,7 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
    1. 无辅助损失的负载均衡
    2. 互补序列层面的辅助损失
 
-671B 的 DeepSeek R1，750G 的硬盘都 671B 的权重都塞不下
 
-
-
-[混合专家模型 (MoE) 详解](https://v11enp9ok1h.feishu.cn/wiki/YC1bwhcyJiQhuJksgO7cVKmqn8e#:~:text=本文讨论了混合专家模型（MoE）的相关内容，包括其与稠密模型相比的优势、结构组成、训练和推理挑战、发展简史、解决问题的方法、不同模型的特点、微调策略、适用场景、优化方法、开源项目以及研究方向等。 关键要点包括： 1.,模型优势：与稠密模型相比，预训练速度更快，相同参数数量下推理速度更快，但需大量显存。 2. 结构组成：由稀疏MoE层和门控网络或路由组成，MoE层含若干专家，门控网络决定令牌路由。)
-
-https://zhuanlan.zhihu.com/p/21584562624
-
-https://zhuanlan.zhihu.com/p/21584562624 参考
-
-MOE 的基本原理是使用混合专家来替代原 transformer 架构中的前向反馈层（FFN），在论文中的示意图如下：
-
-https://arxiv.org/pdf/2101.03961
-
-截取下原始论文的参数变化图和框架图
-
-https://zhuanlan.zhihu.com/p/18565423596
-
-
-
-https://www.armcvai.cn/2025-02-12/deepseek-moe-code.html
-
-https://developer.volcengine.com/articles/7476296702404591654   token 的详细解释
-
-
-
-https://www.youtube.com/watch?v=0BodppoiloM&ab_channel=chaofa%E7%94%A8%E4%BB%A3%E7%A0%81%E6%89%93%E7%82%B9%E9%85%B1%E6%B2%B9
-
-https://www.youtube.com/watch?v=P7txFafuUOE&t=161s&ab_channel=EZ.EncoderAcademy
-
-https://arxiv.org/pdf/2401.06066
-
- 
-
-https://www.youtube.com/watch?v=G1vC1gjcJEI&ab_channel=TensorOps
-
-https://www.youtube.com/watch?v=pl38wKk-dHo&ab_channel=AILinkDeepTech
-
-https://www.youtube.com/watch?v=bd2U-OJ7UJc&ab_channel=GaspardBaye
-
-https://zhuanlan.zhihu.com/p/18565423596
-
-https://cloud.tencent.cn/developer/article/2505656?policyId=1004
 
 ## 参考资料
 

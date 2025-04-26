@@ -5,12 +5,10 @@ title: 专题示例
 icon: fa6-solid:icons
 ---
 
-如果想形成专题文章，并想使用独立侧边栏，则参考本目录使用专题文章。
-
-注意修改 `.vuepress/sidebar.ts` 和下方目录的路径。
+本专题主要总结一些新的 or  热的模型
 
 <!-- markdownlint-disable MD033 -->
 
-<Catalog base='/LLM/微调/'/>
+<Catalog base='/LLM/热门模型/'/>
 
 <!-- markdownlint-enable MD033 -->

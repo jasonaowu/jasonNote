@@ -44,19 +44,15 @@ MOE 全称是 Mixture of Experts，也就是混合专家模型
 
 - **Vs Transformer**
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=OWZjMTVhMjhjZjZiZGQwNmU4MmMyYzRmNmE2OWU0NmZfeVBFYzdQUEFxSDB0Mmg5RG1hSFZsMGx0N045bGd5aHpfVG9rZW46QU9ieWJvUjY1b3F4SU14c09Cb2NYbEd2bnJjXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![Transformer对比](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/cb648375-82d9-4f82-9fbe-d2215310d62c.webp)
 
-![Transformer对比](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=YjMwMmY0OTI2ZDQ0M2U5MDE2NzlkODc0OTQzNGFiMTNfY1Q3VlhRTGN3VjE4R05QVmF5UEoxbXpVR3hoeHRsb0dfVG9rZW46QU9ieWJvUjY1b3F4SU14c09Cb2NYbEd2bnJjXzE3NDU1ODU4NTk6MTc0NTU4OTQ1OV9WNA)
-
-| ![FFn](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=N2JmZjZkZWJmNGIxMTU0ODRiYzc0MjkxMzVmMDYyNDRfc1JBcDQ5WW5yd2VoQ3ZWbXhlY2hJQUg3OXBXazJ5bk9fVG9rZW46UnA1M2Jja25Cb2c2MlJ4TTc5SGNtMFE1bmdlXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA) | ![MOE公式](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=NzYxYTQzZGFjNzBiMTJkMTNhMTNjMzZiYTcwOGQ3YzZfZkx4TW1IQmlqWDNKWFQ0cFh2akNXNm16dFEwemxsZ2dfVG9rZW46WE05UmJ3b0VNb05OUTN4MjdVTGNsSXYxbkNuXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA) |
+| ![FFn](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/f61ccc9d-e249-4399-b5d5-fe4047576725.webp) | ![MOE公式](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/c7c02a38-3840-4f5e-ad60-06dc6ece64b2.webp) |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                             FFN                              |                             MOE                              |
 
-
-
 - **一般的 gating network 的计算，便于和 deepseek 做对比**
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=NjMyYjkxM2U2NDk3ZWE0NTYxYzVkYzZjOTI5NzQ5MzhfWVZqWXh0UmdxTDlZdk40bGEyYU56eER5SGdsUlZiNWlfVG9rZW46VEdOQWJnTURab1V1alZ4b3BHQmNmSm5mbldiXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![0095a6a0-a489-42cc-86d5-6674fa92d8df](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/0095a6a0-a489-42cc-86d5-6674fa92d8df.webp)
 
 #### 优势
 
@@ -70,7 +66,7 @@ MOE 全称是 Mixture of Experts，也就是混合专家模型
 
 ### Switch Transformer
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=MDJhNzY4NTNmMzk0OTc0OTIwZDgwNTEwOTg0MjYyZDdfZjQ1YWN6UlBIaEk1NndFbGl3ajZncUNhUDV4amI1NWhfVG9rZW46Umw1dWJJdFdpb3JqcU14NlZsNWNKa2pSbmhkXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![18fc4416-2296-4eb5-910e-a0b5b0984782](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/18fc4416-2296-4eb5-910e-a0b5b0984782.webp)
 
 ## DeepSeek MOE(2024.01)
 
@@ -91,7 +87,7 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 ### 基本思想
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=MDE0OWJkMDRkYjE0NWFjOGE2OTZhOTVkMTg4YjQyNDVfejhISDdjZHV1WExFa3liOFpEOXk1T3RYMWdNMk9vem5fVG9rZW46WnlSY2JrWm1Tb1BwdTl4T01BR2NUVUJOblVoXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![37d134bb-b70c-40db-bc79-7e9857fb9364](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/37d134bb-b70c-40db-bc79-7e9857fb9364.webp)
 
 #### **精细化专家划分**
 
@@ -99,15 +95,15 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 在保持参数总量不变的情况下，我们通过拆分 FFN 的中间隐藏层维度来对专家进行更加精细的划分。同时，我们激活更多的精细化专家，从而实现更灵活、更适应的专家组合。精细化的专家划分允许多样化的知识更加细致地分解和学习，从而使每个专家能够专注于更高层次的专业化任务。专家激活的灵活性增加，也有助于更准确和针对性地获取知识。
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=MDMyZDYxYWRjNzU0ZTVlZTE3NGFjMWQ5MGZjZmM0N2ZfWkUzaVdXZjNCbmFKeDBxRUhzcHhFWllEZnJkemJLMVVfVG9rZW46VHZHUmJHTjZIbzhzRDF4MlNrcGMyT21HbnlnXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![1b164aa0-fc5a-4b89-8cff-69294513d65e](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/1b164aa0-fc5a-4b89-8cff-69294513d65e.webp)
 
 #### **共享专家隔离**
 
 我们将部分专家隔离出来，作为“共享专家”，始终被激活，用于捕捉和整合不同上下文中的共享知识。通过将共享知识压缩到这些共享专家中，减少了其他专家之间的冗余，从而提高了参数的效率，确保每个路由专家能够专注于独特的领域，保持高水平的专门化。
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWRlYmU4ZDNkZDM0OGM0NjNhMjg0MjY3ZmZmZDEwMGVfTjJLWmRSRHVtNTRUcjVHMlN6VTl5aFpiNzZaREtBMkJfVG9rZW46RWtXSGJhZW81b1FUcU14NFd3c2NuNEwwblBkXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![3aeff8bc-1d9d-4e03-a101-fd6d34c6b31e](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/3aeff8bc-1d9d-4e03-a101-fd6d34c6b31e.webp)
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=MTA0NDg0OTRlZmM4YjM5ZTM3YmI4ZDY2ZjAzNzBmZDVfd3JETnpNVDAxRUdQVUtPZUxyT2Jxc3F5MTJZYW1LRGRfVG9rZW46S0ZhYWJOMVp6b1d4bzd4cEs2T2M0Qks2bmRjXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![2d03bf2c-1142-416b-8921-739967b392e9](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/2d03bf2c-1142-416b-8921-739967b392e9.webp)
 
 #### **负载均衡问题**
 
@@ -122,13 +118,13 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 解决方案：
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=M2YzZTY4NmMzMjNkN2VhMWQyYzQ1MTExNWIxZGQxZWJfbzUzN1cwVEt0OFU5Rm9QdXh6NDNKOXVpaDNCUVNyYzVfVG9rZW46VUZaYmJGZ2dxbzhNaHl4R3VtMWNLdUQ2bmhjXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![ef67d1fe-4a22-4d68-ba99-6c6b94062200](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/ef67d1fe-4a22-4d68-ba99-6c6b94062200.webp)
 
 ##### 专家级负载均衡
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=Njc4ODQyNTk3NjA2NDY5YTBjMGRmZWY2M2YwNmY1ZjZfYWZ4dFRlclA4a1RTVUpNNWpMUGtlN3BaeE5LeFdKSGhfVG9rZW46SXpaS2I5dUpDb0t0Umh4OE42RGNCYjNsbkdnXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![893fd346-4dfe-4c4a-9fe9-562173ef022f](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/893fd346-4dfe-4c4a-9fe9-562173ef022f.webp)
 
-![img](https://s08a4grxpw8.feishu.cn/space/api/box/stream/download/asynccode/?code=ZjA5OTcxZTkwMWFmOTVjYzE0YmZjYzU5Y2I4NzQ5OThfbHlyZmU4a2xHZ2tvVmYzdEVnUXNrczFGb2xNdVQxZDdfVG9rZW46RnNEQ2I1MW9jb0U2Q1F4VWpZaWNIVW9ObjVmXzE3NDU1OTMyMjU6MTc0NTU5NjgyNV9WNA)
+![24555d94-2d6d-4920-b1df-47016d853dd3](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/24555d94-2d6d-4920-b1df-47016d853dd3.webp)
 
 ##### 设备级负载均衡
 

@@ -41,12 +41,16 @@ MOE 全称是 Mixture of Experts，也就是混合专家模型。
 
 ### 最最最原始版
 
-<img src="https://pica.zhimg.com/v2-5042f8dcece52f73707ae5643711d8ba_1440w.jpg" alt="MoE基础框架" style="zoom:50%;" />
+![image-20250427012214472](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427012214472.webp)
 
 #### 组成
 
 1. **稀疏 MOE 层**：n 个专家 FFN
 2. **路由**：token 到 top-K 个专家
+
+计算方式如下图
+
+![MOE计算](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427013428021.webp)
 
 #### FFN 对比
 
@@ -79,9 +83,13 @@ MOE 全称是 Mixture of Experts，也就是混合专家模型。
 
 ### 最大问题-负载均衡
 
+> 可能有的专家更新计算的非常频繁，有的专家根本不动；随着训练的进行，会发现模型会倾向与更新快的专家
+
 - 门控网络往往倾向于主要激活相同的几个专家。受欢迎的专家训练得更快，因此更容易被选择
-- 引入了一个辅助损失Aux Loss，鼓励所有专家相同的重要性，平衡计算量
+- 引入了一个<span style="color:blue;">**辅助损失Aux Loss**</span>，鼓励所有专家相同的重要性，平衡计算量，使得不同专家学习不同的知识
 - Aux Loss确保所有专家接收到大致相等数量的训练样本，从而平衡专家间选择
+
+
 
 
 

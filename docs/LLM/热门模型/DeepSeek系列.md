@@ -31,9 +31,17 @@ order: 2
 
 ## MOE 基本原理
 
-MOE 全称是 Mixture of Experts，也就是混合专家模型
+MOE 全称是 Mixture of Experts，也就是混合专家模型。
+
+模型规模是提升模型性能的关键因素之一。在有限的计算资源预算下，用更少的训练步数训练一个更大的模型，往往比用更多的步数训练一个较小的模型效果更佳。
+
+近期发布的大模型开始广泛转向MOE架构：
+
+![image-20250427011529235](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427011529235.webp)
 
 ### 最最最原始版
+
+<img src="https://pica.zhimg.com/v2-5042f8dcece52f73707ae5643711d8ba_1440w.jpg" alt="MoE基础框架" style="zoom:50%;" />
 
 #### 组成
 
@@ -54,19 +62,28 @@ MOE 全称是 Mixture of Experts，也就是混合专家模型
 
 ![0095a6a0-a489-42cc-86d5-6674fa92d8df](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/0095a6a0-a489-42cc-86d5-6674fa92d8df.webp)
 
-#### 优势
+#### 特点
 
 - 相比 dense 模型，**预训练速度更快**
 - 相比同参数量模型，**推理速度更快**
 - 但是需要高 VRAM，因为所有专家都加载在内存中
+- 在 **微调方面存在诸多挑战**
 
 > 一个最直观的数据：
 >
-> 在 DeepSeek 官网上看到，DeepSeek-V3、V2.5 版本都用了 MoE 架构。但像 Qwen、LLama 模型，用的却是 Dense 架构，也就是传统的 Transformer 架构。这两种架构有个很明显的区别。DeepSeek-V3 版本总参数量高达 6710 亿，可每次计算激活的参数量，也就是真正参与到计算里的参数，只有 370 亿，是总参数量的 5.5%。但 Qwen 和 LLama 模型就不一样了，它们每次计算激活的参数量，就是整个模型的参数量，没有 “打折”。
+> 在 DeepSeek 官网上看到，DeepSeek-V3、V2.5 版本都用了 MoE 架构。但像 Qwen、LLama 模型，用的却是 Dense 架构，也就是传统的 Transformer 架构。这两种架构有个很明显的区别。DeepSeek-V3 版本总参数量高达 6710 亿，可每次计算激活的参数量，也就是真正参与到计算里的参数，只有 370 亿，是总参数量的  <span style="color:blue;">**5.5%**</span>。但 Qwen 和 LLama 模型就不一样了，它们每次计算激活的参数量，就是整个模型的参数量，没有 “打折”。
 
 ### Switch Transformer
 
 ![18fc4416-2296-4eb5-910e-a0b5b0984782](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/18fc4416-2296-4eb5-910e-a0b5b0984782.webp)
+
+### 最大问题-负载均衡
+
+- 门控网络往往倾向于主要激活相同的几个专家。受欢迎的专家训练得更快，因此更容易被选择
+- 引入了一个辅助损失Aux Loss，鼓励所有专家相同的重要性，平衡计算量
+- Aux Loss确保所有专家接收到大致相等数量的训练样本，从而平衡专家间选择
+
+
 
 ## DeepSeek MOE(2024.01)
 
@@ -78,8 +95,7 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 ### 背景
 
-- LLM 中，<span style="color:blue;">**扩展模型参数时节约成本**</span>，故使用 MoE
-
+- LLM 中，<span style="color:blue;">**扩展模型参数时节约成本**</span>，故使用 MoE。MOE架构还是很有前途的，但是之前的MOE架构不能很好的稳定的收敛了，每个专家获取的知识差异化不明显。
 - Deepseek MOE 就是为了通过更加高效的机制来确保专家之间的任务分配具有更高的<span style="color:blue;">**专门化**</span>。
 - 无法确保专家的专门化：这种重叠会导致专家没有获得足够的独特知识，也使得专家之间的差异化不明显，限制了模型的性能和效率。
   - **知识混杂性（Knowledge Hybridity）**：在传统的 MoE 架构中，通常只使用有限数量的专家（例如 8 个或 16 个）。当某个 token 被分配给某个专家时，这些专家所涵盖的知识往往是多样化的，因此该专家的参数会试图同时存储和处理非常不同类型的知识。这种知识的多样性和复杂性导致专家的知识无法高度专注和聚焦，从而难以在同一模型中有效地利用这些不同类型的知识。
@@ -149,6 +165,43 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 1. 进一步优化负载均衡
    1. 无辅助损失的负载均衡
    2. 互补序列层面的辅助损失
+
+- DeepSeek V3和V2模型结构大体一致
+  - 模型层数相差不大，增加模型宽度以及专家数量，调整token路由策略实现负载均衡
+
+- 调整模型超参引入FP8量化
+  - 引入FP8量化减少显存需求，提升训川练效率，降
+    低训练成本
+
+- 分阶段训练：
+  - 模型效果的提升主要依赖训川练算法的升级(pos
+    t-training,RL、knowledge distillation等)
+
+
+
+![image-20250427010014303](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427010014303.webp)
+
+
+
+## 模型蒸馏
+
+> 之前的错误理解是MOE可以降低计算量，同时消耗不大的显存。纠错后发现MOE是有做模型蒸馏or模型量化的必要的。
+
+![image-20250427011017923](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427011017923.webp)
+
+
+
+
+
+
+
+## 手撕MOE
+
+
+
+
+
+
 
 
 

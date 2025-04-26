@@ -89,9 +89,13 @@ MOE 全称是 Mixture of Experts，也就是混合专家模型。
 - 引入了一个<span style="color:blue;">**辅助损失Aux Loss**</span>，鼓励所有专家相同的重要性，平衡计算量，使得不同专家学习不同的知识
 - Aux Loss确保所有专家接收到大致相等数量的训练样本，从而平衡专家间选择
 
+**Aux loss计算**
 
+![image-20250427015343377](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427015343377.webp)
 
+替换一个$\frac{c_e}{s}$为$m_e$，引入可学习参数，得到：
 
+![image-20250427015637422](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427015637422.webp)
 
 ## DeepSeek MOE(2024.01)
 
@@ -131,14 +135,12 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 #### **负载均衡问题**
 
-> MOE 类模型的通病
+除了在模型架构上的改进，随着DeepSeek从V1 到 V3的演进，在负载均衡上，做了较多工作。
+
+> 虽然稀疏门控能在不增加计算成本的情况下显著扩展模型参数空间，但其性能高度依赖门控机制的有效性。门控机制无法控制发给专家的 token 的概率，所以在实际操作中，会存在专家间工作负载分布不均衡的情况。
 >
-> 虽然稀疏门控能在不增加计算成本的情况下显著扩展模型参数空间，但其性能高度依赖门控机制的有效性。门控机制无法控制发给专家的 token 的概率，所以在实际操作中，会存在专家间工作负载分布不均衡的情况。某些专家被频繁使用（接收到了很多 token）而其他专家却很少被调用（接收的 token 寥寥无几）。这不仅不符合 MoE 的设计初衷（术业有专攻），还影响计算效率（例如引起分布式训练中各卡通讯时的负载不均）。
-
-负载不均衡会造成：
-
-1. 模型始终选择少数几个专家，其他专家缺乏充分训练，甚至部分专家参数完全没有更新
-2. 专家并行计算时计算瓶颈（分到 16 张卡上，花了 16 张卡的运行时的钱，只有一张卡在工作）
+> 1. 某些专家被频繁使用（接收到了很多 token）而其他专家却很少被调用（接收的 token 寥寥无几）。这不仅不符合 MoE 的设计初衷（术业有专攻），还影响计算效率（例如引起分布式训练中各卡通讯时的负载不均）。
+> 2. 专家并行计算时计算瓶颈（分到 16 张卡上，花了 16 张卡的运行时的钱，只有一张卡在工作）
 
 解决方案：
 
@@ -146,44 +148,51 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 ##### 专家级负载均衡
 
+做负载均衡的同时，考虑了**保持计算损失的恒定，不随专家数量的变化而变化**。
+
 ![893fd346-4dfe-4c4a-9fe9-562173ef022f](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/893fd346-4dfe-4c4a-9fe9-562173ef022f.webp)
 
 ![24555d94-2d6d-4920-b1df-47016d853dd3](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/24555d94-2d6d-4920-b1df-47016d853dd3.webp)
 
+理解：
+
+$f_i$表示实际分配的token的百分比，$P_i$表示理论上分配的平均，然后算一个内积？使之尽可能小
+
 ##### 设备级负载均衡
 
+将专家分成 D 组 $\{\mathcal{E}_1,\mathcal{E}_2,\ldots,\mathcal{E}_D\}$，每组专家放在一个设备上，为了保证设备间的计算负载均衡， 引入设备级负载loss。设备级负载loss 比专家级粒度更大，相当于在多组专家间做负载均衡，主要用来平衡不同设备的计算负载。如下图公式所示
 
+![image-20250427020505000](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427020505000.webp)
 
 
 
 ## DeepSeek-V2
 
-进一步优化负载均衡
+DeepSeek V2 相对于V1版，对MoE模块主要在负载均衡上做了三方面升级:
 
-
-
-
+1. 设备受限的专家路由机制
+2. 增加通信负载均衡loss
+3. 设备级Token丢弃策略
 
 ## DeepSeek-V3(Reasoning model)
 
-1. 门控函数优化
+![Refer to caption](https://arxiv.org/html/2412.19437v1/x2.png)
+
+首先在基本的MoE框架上，延续了细粒度专家（finer-grained experts）和 共享专家（Shared Expert Isolation）的设计。在门控网络和负载均衡方面都做了些改进。具体如下：
+
+### 门控函数
 
 > 首先 V3 的模型远大于 V2，V3 的每层 MOE 中有 256 个路由专家，8 个激活专家。但 V2 中只有 160 个路由专家，6 个激活专家，从参数上就可以发现 V3 的门控函数计算量远大于 V2，大家也都清楚当计算维度变大时 SoftMax 的前向和反向是很耗费计算资源的，而 Sigmod 直接将数值映射到[0，1]之间，相对来说更加简单。可能实现效果也类似，因此为了更加高效的训练从而进行了替换。
 
-1. 进一步优化负载均衡
-   1. 无辅助损失的负载均衡
-   2. 互补序列层面的辅助损失
+![image-20250427022302601](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427022302601.webp)
 
-- DeepSeek V3和V2模型结构大体一致
-  - 模型层数相差不大，增加模型宽度以及专家数量，调整token路由策略实现负载均衡
+### 无auc loss的负载均衡
 
-- 调整模型超参引入FP8量化
-  - 引入FP8量化减少显存需求，提升训川练效率，降
-    低训练成本
+加loss会影响模型性能
 
-- 分阶段训练：
-  - 模型效果的提升主要依赖训川练算法的升级(pos
-    t-training,RL、knowledge distillation等)
+![image-20250427022250889](https://blog-1316756713.cos.ap-shanghai.myqcloud.com/bolg/image-20250427022250889.webp)
+
+
 
 
 
@@ -199,11 +208,294 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 
 
 
+- 开源的蒸馏模型的方案
+
+用DeepSeek R1生成数据，拿来SFT训练Qwen小模型
 
 
 
+## 源码
 
-## 手撕MOE
+### 手撕MOE
+
+含负载均衡的分析log
+
+```python
+class Expert(nn.Module):
+    def __init__(self, input_dim, hidden_dim, output_dim):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.GELU(),
+            nn.Linear(hidden_dim, output_dim))
+    def forward(self, x):
+        return self.net(x)
+    
+class MoE(nn.Module):
+    def __init__(self, input_dim, num_experts, top_k, expert_capacity, hidden_dim, output_dim):
+        super().__init__()
+        self.num_experts = num_experts
+        self.top_k = top_k
+        self.expert_capacity = expert_capacity
+        
+        # 路由网络
+        self.gate = nn.Linear(input_dim, num_experts)
+        
+        # 专家集合
+        self.experts = nn.ModuleList(
+            [Expert(input_dim, hidden_dim, output_dim) for _ in range(num_experts)])
+        
+    def forward(self, x):
+        batch_size, input_dim = x.shape
+        device = x.device
+        
+        # 路由计算
+        logits = self.gate(x)
+        probs = torch.softmax(logits, dim=-1)
+        print("probs: ", probs)
+        topk_probs, topk_indices = torch.topk(probs, self.top_k, dim=-1)
+        print("topk_probs: ", topk_probs)
+        print("topk_indices: ", topk_indices)
+        # 辅助损失计算
+        if self.training:
+            # 重要性损失（专家利用率均衡）
+            importance = probs.sum(0)
+            importance_loss = torch.var(importance) / (self.num_experts ** 2)
+            
+            # 负载均衡损失（样本分配均衡）
+            mask = torch.zeros_like(probs, dtype=torch.bool)
+            mask.scatter_(1, topk_indices, True)
+            routing_probs = probs * mask
+            expert_usage = mask.float().mean(0)
+            routing_weights = routing_probs.mean(0)
+            load_balance_loss = self.num_experts * (expert_usage * routing_weights).sum()
+            
+            aux_loss = importance_loss + load_balance_loss
+        else:
+            aux_loss = 0.0
+        # 专家分配逻辑
+        flat_indices = topk_indices.view(-1)
+        flat_probs = topk_probs.view(-1)
+        sample_indices = torch.arange(batch_size, device=device)[:, None]\
+                            .expand(-1, self.top_k).flatten()
+        print("sample_indices: ", sample_indices)
+        # 初始化输出
+        outputs = torch.zeros(batch_size, self.experts[0].net[-1].out_features, 
+                            device=device)
+        # 处理每个专家
+        for expert_idx in range(self.num_experts):
+            print("expert_idx: ", expert_idx)
+            # 获取分配给当前专家的样本
+            expert_mask = flat_indices == expert_idx
+            print("expert_mask: ", expert_mask)
+            expert_samples = sample_indices[expert_mask]
+            print("expert_samples: ", expert_samples)
+            expert_weights = flat_probs[expert_mask]
+            print("expert_weights: ", expert_weights)
+            # 容量控制
+            if len(expert_samples) > self.expert_capacity:
+                expert_samples = expert_samples[:self.expert_capacity]
+                expert_weights = expert_weights[:self.expert_capacity]
+            if len(expert_samples) == 0:
+                continue
+            # 处理专家计算
+            expert_input = x[expert_samples]
+            print("expert_input: ", expert_input)
+            expert_output = self.experts[expert_idx](expert_input)
+            weighted_output = expert_output * expert_weights.unsqueeze(-1)
+            
+            # 累加输出
+            outputs.index_add_(0, expert_samples, weighted_output)
+        return outputs, aux_loss
+# 测试示例
+if __name__ == "__main__":
+    input_dim = 5
+    output_dim = 10
+    num_experts = 8
+    top_k = 3
+    expert_capacity = 32
+    hidden_dim = 512
+    batch_size = 10
+    # add
+    device = torch.device("npu:4" if torch.npu.is_available() else "cpu")
+    moe = MoE(input_dim, num_experts, top_k, expert_capacity, hidden_dim, output_dim).to(device)
+    x = torch.randn(batch_size, input_dim).to(device)
+    moe.eval()
+    output, _ = moe(x)
+    print(f"Eval output shape: {output.shape}") # torch.Size([64, 256])
+```
+
+
+
+### KD + MOE
+
+```python
+# https://github.com/cm2solutions/deepseek-r1-distillation/tree/main
+class DeepSeekDistiller:
+    """
+    Main class for knowledge distillation of DeepSeek R1 models.
+    """
+    
+    def __init__(
+        self,
+        teacher_model: Union[str, PreTrainedModel],
+        student_model: Union[str, PreTrainedModel],
+        tokenizer: Optional[Any] = None,
+        temperature: float = 2.0,
+        alpha: float = 0.5,
+        hidden_loss_weight: float = 0.0,
+        attention_loss_weight: float = 0.0,
+        relation_loss_weight: float = 0.0,
+        distill_method: str = "kd",
+        device: str = "cuda" if torch.cuda.is_available() else "cpu",
+        teacher_dtype: str = "float16",
+        student_dtype: str = "float16",
+    ):
+        """
+        Initialize the distiller.
+        
+        Args:
+            teacher_model: Teacher model or path to teacher model
+            student_model: Student model or path to student model
+            tokenizer: Tokenizer for both models
+            temperature: Temperature for distillation
+            alpha: Weight for distillation loss vs task loss
+            hidden_loss_weight: Weight for hidden state mimicking
+            attention_loss_weight: Weight for attention map mimicking
+            relation_loss_weight: Weight for relation-based distillation
+            distill_method: Distillation technique to use
+            device: Device to run models on
+            teacher_dtype: Data type for teacher model
+            student_dtype: Data type for student model
+        """
+        self.device = device
+        self.teacher_dtype = self._get_dtype(teacher_dtype)
+        self.student_dtype = self._get_dtype(student_dtype)
+        
+        # Load teacher model
+        if isinstance(teacher_model, str):
+            self.teacher = AutoModelForCausalLM.from_pretrained(
+                teacher_model,
+                torch_dtype=self.teacher_dtype,
+                device_map="auto" if self.device == "cuda" else None,
+                output_hidden_states=True,
+                output_attentions=attention_loss_weight > 0,
+            )
+        else:
+            self.teacher = teacher_model
+            self.teacher.config.output_hidden_states = True
+            self.teacher.config.output_attentions = attention_loss_weight > 0
+            
+        # Ensure teacher is in eval mode and optionally freeze
+        self.teacher.eval()
+        for param in self.teacher.parameters():
+            param.requires_grad = False
+            
+        # Load student model
+        if isinstance(student_model, str):
+            self.student = AutoModelForCausalLM.from_pretrained(
+                student_model,
+                torch_dtype=self.student_dtype,
+                device_map="auto" if self.device == "cuda" else None,
+                output_hidden_states=True,
+                output_attentions=attention_loss_weight > 0,
+            )
+        else:
+            self.student = student_model
+            self.student.config.output_hidden_states = True
+            self.student.config.output_attentions = attention_loss_weight > 0
+            
+        # Load tokenizer if not provided
+        if tokenizer is None:
+            if isinstance(teacher_model, str):
+                self.tokenizer = AutoTokenizer.from_pretrained(teacher_model)
+            else:
+                self.tokenizer = AutoTokenizer.from_pretrained(student_model if isinstance(student_model, str) else "deepseek-ai/deepseek-r1-model-330m")
+        else:
+            self.tokenizer = tokenizer
+            
+        # Initialize distillation loss
+        self.distillation_loss = DistillationLoss(
+            temperature=temperature,
+            alpha=alpha,
+            hidden_loss_weight=hidden_loss_weight,
+            attention_loss_weight=attention_loss_weight,
+            relation_loss_weight=relation_loss_weight,
+            distill_method=distill_method,
+        )
+        
+    def _get_dtype(self, dtype_str: str) -> torch.dtype:
+        """
+        Convert string dtype to torch dtype.
+        
+        Args:
+            dtype_str: String representation of dtype
+            
+        Returns:
+            Corresponding torch dtype
+        """
+        dtype_map = {
+            "float32": torch.float32,
+            "float16": torch.float16,
+            "bfloat16": torch.bfloat16,
+        }
+        return dtype_map.get(dtype_str, torch.float32)
+    
+    def train_step(
+        self,
+        input_ids: torch.Tensor,
+        attention_mask: torch.Tensor,
+        labels: Optional[torch.Tensor] = None,
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """
+        Perform a single training step.
+        
+        Args:
+            input_ids: Input token IDs
+            attention_mask: Attention mask
+            labels: Optional labels for supervised loss
+            
+        Returns:
+            Total loss and dictionary of component losses
+        """
+        # Get teacher outputs (no gradients needed)
+        with torch.no_grad():
+            teacher_outputs = self.teacher(
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                return_dict=True,
+            )
+            
+        # Get student outputs
+        student_outputs = self.student(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            labels=labels,  # This will compute loss internally if provided
+            return_dict=True,
+        )
+        
+        # Calculate distillation loss
+        total_loss, losses = self.distillation_loss(
+            student_outputs=student_outputs,
+            teacher_outputs=teacher_outputs,
+            labels=labels,
+            attention_mask=attention_mask,
+        )
+        
+        return total_loss, losses
+    
+    def save_student(self, output_dir: str):
+        """
+        Save the student model and tokenizer.
+        
+        Args:
+            output_dir: Directory to save model to
+        """
+        self.student.save_pretrained(output_dir)
+        self.tokenizer.save_pretrained(output_dir)
+```
+
+
 
 
 
@@ -216,5 +508,13 @@ DeepSeek-V2 及其之后的模型用的都是 MoE 了。
 ## 参考资料
 
 - [MOE 介绍](https://kevincheung2259.github.io/2024/09/13/MOE-Intro/index.html)
+
 - [DeepSeek 技术解析](https://deepseek.csdn.net/67fa2941da5d787fd5cb6acb.html)
+
 - [负载均衡部分参考资料](https://www.cnblogs.com/rossiXYZ/p/18835426#0x00-概述)
+
+- [变m_e的参考](https://zhuanlan.zhihu.com/p/18565423596)
+
+- [Deepseek-v3](https://zhuanlan.zhihu.com/p/14988009150)
+
+  
